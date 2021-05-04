@@ -1053,7 +1053,7 @@ proc_reqfilled() {
     else
 
       ## It WAS requested by name. Extract the number of the release.
-      WHATNEW="$( cat $reqfile | grep "\[[\ |0-9][0-9]:\] $WHAT \~" | cut -d ']' -f1 | head -n1 )"
+      WHATNEW="$( cat $reqfile | grep "\[[\ |0-9][0-9][0-9]:\] $WHAT \~" | cut -d ']' -f1 | head -n1 )"
 
       if [ -z "$WHATNEW" ]; then
         echo "Internal Error: Found the $WHAT request in the list but failed to extract its number.."
@@ -1062,7 +1062,7 @@ proc_reqfilled() {
       fi
 
       ## Add a ] at the end of it.
-      WHATNEW="${WHATNEW}]"
+      WHATNEW="${WHATNEW}"
       if [ "$mode" = "gl" ]; then
         echo "Request number for $WHAT seems to be: $WHATNEW"
       fi
